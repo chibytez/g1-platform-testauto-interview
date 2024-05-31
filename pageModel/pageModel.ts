@@ -10,12 +10,15 @@ export const createPageModel = (testController: ITestController) => {
   return {
     myWebSite: {
       home: {
-        loginButton: page.locator("CSS selector"),
+        loginButton: page.getByRole('link', { name: 'Sign in' }),
       },
       loginForm: {
-        usernameInput: page.locator("CSS selector"),
-        passwordInput: page.locator("CSS selector"),
+        usernameInput: page.locator("#login_field"),
+        passwordInput: page.locator("#password"),
+        submitButton: page.locator('[name="commit"]'),
+        form: page.locator('form[action="/session"]'),
       },
+      logoutButton: page.locator('[href*="/logout"]'),
     },
   };
 };
